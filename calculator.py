@@ -122,9 +122,13 @@ class Calculator:
         self.updateEquationLabel()
     
     def modifyAnswer(self):
-        self.answer = eval(self.equation)
-        self.updateAnswerLabel()
-        self.needClear = True
+        try:
+            self.answer = eval(self.equation)
+            self.updateAnswerLabel()
+        except Exception as e:
+            self.equation = "Error"
+        finally:
+            self.needClear = True
     
     def clear(self):
         self.equation = ""
